@@ -20,7 +20,6 @@ module.exports.getMovies = (req, reply) => {
 		}
 	]
 	};
-
 	reply(response);
 }
 
