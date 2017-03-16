@@ -13,12 +13,8 @@ import App from './src/App'
 
 export default class JKMoviesApp extends Component {
   render() {
-    return (
-      <App />
-    );
+    return (<App />);
   }
 }
-
-
 
 AppRegistry.registerComponent('JKMoviesApp', () => JKMoviesApp);

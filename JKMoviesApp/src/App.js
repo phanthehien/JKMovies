@@ -9,6 +9,18 @@ import {
     View
 } from 'react-native';
 
+import MoviesContainer from './containers/MoviesContainer'
+
+import { createStore, applyMiddleware } from 'redux'
+import { Provider} from 'react-redux'
+import devToolsEnhancer from 'remote-redux-devtools';
+import thunk from 'redux-thunk'
+
+import rootReducer  from './reducers'
+
+const initialState = {};
+
+const store = createStore(rootReducer, initialState, applyMiddleware(thunk), devToolsEnhancer());
 
 const styles = StyleSheet.create({
     container: {
@@ -34,18 +46,12 @@ class App extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native! Hello world
-                </Text>
-            </View>
+            <Provider store={store}>
+                <MoviesContainer />
+            </Provider>
         );
     }
 }
-
-App.defaultProps = {
-    title: "[not value set]",
-};
 
 export default App;
 
