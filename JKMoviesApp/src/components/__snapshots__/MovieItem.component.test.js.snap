@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Contact Form correctly 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Flight of Fury
+    Horror
+    Xuan Nguyen
+    123
+    This is a cool film
+    http://movie.com/photo/fligh.png
+  </Text>
+</View>
+`;
