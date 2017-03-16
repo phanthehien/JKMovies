@@ -4,11 +4,12 @@ const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 const Pack = require('./package');
 const configureRoutes = require('./src/routes/movies.route');
+const conf = require('./conf/hapi.conf');
 
 const server = new Hapi.Server();
 server.connection({
 	host: 'localhost',
-	port: 3001
+	port: conf.serverPort
 });
 
 const options = {
