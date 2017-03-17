@@ -19,21 +19,6 @@ module.exports.getMovies = (req, reply) => {
 }
 
 module.exports.getMovieDetail = (req, reply) => {
-					const response = 
-				{
-					success : true,
-					data: 
-						{ 
-							title:"Flight of Fury",
-							type: "Horror",
-							director: "Xuan Nguyen",
-							length: 123,
-							short_description:"This is a cool film",
-							photo_url: "http://movie.com/photo/fligh.png",
-							video_url: "http://movie.com/photo/fligh.png",
-							stars: "Hien Phan, Xuan Trinh, Xuan Hinh, Tran Thanh"
-						}
-				}
 				return moviesService.getMovie(req.params.id, moviesRepository.getMovie)
 				.then((movie) => {
 					if(!movie) {
@@ -47,6 +32,6 @@ module.exports.getMovieDetail = (req, reply) => {
 				})
 				.catch((error) => {
 					console.error(error);
-					return reply(Boom.badImplementation);
+					return reply(Boom.badImplementation());
 				});
 }
