@@ -1,3 +1,4 @@
+const moviesService = require('../services/moviesService');
 module.exports.getMovies = (req, reply) => {
 	const response = {
 	success: true,
@@ -20,7 +21,14 @@ module.exports.getMovies = (req, reply) => {
 		}
 	]
 	};
-	reply(response);
+	return moviesService.getMovies()
+		.then((movies) => {
+			const response = {
+				success: true,
+				data: movies
+			};
+			reply(response);
+		});
 }
 
 module.exports.getMovieDetail = (req, reply) => {
