@@ -6,15 +6,8 @@ import * as constants from '../common/constants'
 
 
 const initialState = {
-    data :[{
-        title:"Flight of Fury",
-        type: "Horror",
-        director: "Xuan Nguyen",
-        length: 123,
-        short_description:"This is a cool film",
-        photo_url: "http://movie.com/photo/fligh.png"
-        }]
-    };
+    data :[]
+};
 
 const MoviesReducer = (state = initialState, action) => {
 

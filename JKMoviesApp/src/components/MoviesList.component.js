@@ -19,6 +19,7 @@ var createMovieItem = (movie) => <MovieItem movie={movie} />;
 
 var styles = StyleSheet.create({
     scrollView: {
+        marginTop:20,
         backgroundColor: '#6A85B1',
         height: 300,
     },
