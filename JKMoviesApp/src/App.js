@@ -10,21 +10,20 @@ import {
 } from 'react-native';
 
 import MoviesContainer from './containers/MoviesContainer'
+import { addNavigationHelpers } from 'react-navigation';
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider} from 'react-redux'
 import devToolsEnhancer from 'remote-redux-devtools';
 import thunk from 'redux-thunk'
-
-import * as constants from './common/constants'
 import * as moviesAction from './actions/movies'
+import AppWithNavigationState from './AppWithNavigationState'
 
-
-import rootReducer  from './reducers'
+import * as root  from './reducers'
 
 const initialState = {};
 
-const store = createStore(rootReducer, initialState, applyMiddleware(thunk), devToolsEnhancer());
+const store = createStore(root.rootReducer, initialState, applyMiddleware(thunk), devToolsEnhancer());
 
 const styles = StyleSheet.create({
     container: {
@@ -46,6 +45,8 @@ const styles = StyleSheet.create({
 });
 
 store.dispatch(moviesAction.loadMovies());
+
+
 class App extends Component {
 
     render() {
