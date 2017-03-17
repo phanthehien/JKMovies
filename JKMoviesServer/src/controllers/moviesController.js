@@ -1,5 +1,7 @@
 const moviesService = require('../services/moviesService');
 const moviesRepository = require('../repositories/moviesRepository');
+const Boom = require('boom');
+
 module.exports.getMovies = (req, reply) => {
 	return moviesService.getMovies(moviesRepository.loadMovies)
 		.then((movies) => {
@@ -7,7 +9,12 @@ module.exports.getMovies = (req, reply) => {
 				success: true,
 				data: movies
 			};
-			reply(response);
+			return reply(response);
+		})
+		.catch((error) => {
+			console.log('flsjlfsldf');
+			console.error(error);
+			return reply(Boom.badImplementation());
 		});
 }
 

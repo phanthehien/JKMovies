@@ -3,6 +3,7 @@ const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const moviesService = require('../src/services/moviesService');
 const moviesController = require('../src/controllers/moviesController');
+const Boom = require('boom');
 
 chai.should();
 chai.use(sinonChai);
@@ -87,4 +88,21 @@ describe('When requesting getMovies', () => {
     })
     .catch((err) => done(err));
   });
+
+  it('should return 500 status code if internal errors happen', (done) => {
+    sandbox.stub(moviesService, 'getMovies').callsFake(() => {
+      return new Promise((resolve, reject) => {
+        reject({code:'CAN_NOT_OPEN_CONNECTION'});
+      })
+    });
+    const reply = sinon.spy();
+    moviesController.getMovies({}, reply)
+    .then(() => {
+      reply.should.have.been.calledWith(sinon.match({output: Boom.badImplementation().output}));
+      done();
+    })
+    .catch((error) => {
+      done(error);
+    })
+  })
 })
