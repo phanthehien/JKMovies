@@ -1,8 +1,11 @@
 /**
- * Created by hien.phanthe on 3/16/17.
+ * Created by hien.phanthe on 3/17/17.
  */
-
 import React, {Component} from 'react';
+
+import MoviesList from '../components/MoviesList.component'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import {
     StyleSheet,
@@ -11,6 +14,7 @@ import {
     Image,
     Button
 } from 'react-native';
+
 
 
 const styles = StyleSheet.create ({
@@ -37,29 +41,47 @@ const styles = StyleSheet.create ({
     }
 });
 
+class MovieDetailContainer extends Component {
 
-class MovieItem extends Component {
-
+    convertToMinute(minutes)
+    {
+        return parseInt((minutes / 60), 10) + "h:" +  minutes % 60 + "m"
+    }
 
     render() {
 
-        var { movie } = this.props;
+
+        var movie  = this.props.navigation.state.params;
         var { title, type, director, length, short_description, photo_url } = movie;
+
 
         return (
             <View style={styles.item}>
+                <Text style={styles.title} >{title} ({this.convertToMinute(length)})</Text>
                 <Image style={styles.image} source={{uri: photo_url}} />
-                <Text style={styles.title} >{title}</Text>
+                <Text>{director}</Text>
                 <Text>
                     {type}
                 </Text>
-                <Button
-                    onPress={() => this.props.onSelect(movie)}
-                    title="View"
-                />
+                <Text>{short_description}</Text>
+
             </View>
-        );
+        )
     }
 }
 
-export default MovieItem;
+
+const mapStateToProps = (store) => {
+    return {
+        movies  : store.movies
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailContainer);

@@ -17,12 +17,13 @@ class MoviesContainer extends Component {
 
 
     render() {
+        const { navigate } = this.props.navigation;
 
         var { data , error } = this.props.movies;
 
 
         return (
-            (!error && data && data.length > 0) ?  <MoviesList movies={data} /> : <Text>{error}</Text>
+            (!error && data && data.length > 0) ?  <MoviesList movies={data} onSelect={(movie) => navigate('MovieDetail', movie)} /> : <Text>{error}</Text>
         )
     }
 }

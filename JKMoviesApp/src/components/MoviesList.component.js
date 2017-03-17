@@ -15,7 +15,6 @@ import {
 } from 'react-native';
 
 
-var createMovieItem = (movie) => <MovieItem key={movie._id} movie={movie} />;
 
 var styles = StyleSheet.create({
     scrollView: {
@@ -65,7 +64,9 @@ class MoviesList extends Component {
     render() {
 
         var _scrollView: ScrollView;
-        var { movies } = this.props;
+        var { movies, onSelect } = this.props;
+
+        const createMovieItem = (movie, onSelect) => <MovieItem key={movie._id} movie={movie} onSelect={onSelect} />;
 
         return (
 
@@ -76,7 +77,7 @@ class MoviesList extends Component {
                 scrollEventThrottle={200}
                 style={styles.scrollView}>
                 <View style={styles.container}>
-                 {movies.map(createMovieItem)}
+                    {movies.map( movie =>  createMovieItem(movie, onSelect))}
                 </View>
             </ScrollView>
         );
