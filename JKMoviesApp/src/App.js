@@ -10,21 +10,31 @@ import {
 } from 'react-native';
 
 import MoviesContainer from './containers/MoviesContainer'
+import MovieDetailContainer from './containers/MovieDetailContainer'
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider} from 'react-redux'
 import devToolsEnhancer from 'remote-redux-devtools';
 import thunk from 'redux-thunk'
 
-import * as constants from './common/constants'
 import * as moviesAction from './actions/movies'
+import { StackNavigator } from 'react-navigation';
+
+
 
 
 import rootReducer  from './reducers'
 
+
 const initialState = {};
 
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk), devToolsEnhancer());
+
+const SimpleApp = StackNavigator({
+    Movies: { screen: MoviesContainer },
+    MovieDetail: { screen: MovieDetailContainer },
+});
+
 
 const styles = StyleSheet.create({
     container: {
@@ -51,7 +61,7 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <MoviesContainer />
+                <SimpleApp />
             </Provider>
         );
     }
