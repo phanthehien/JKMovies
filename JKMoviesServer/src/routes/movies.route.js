@@ -1,4 +1,5 @@
 const moviesControllers = require('../controllers/moviesController');
+const Joi = require('joi');
 module.exports = () => {
 	return [
 		{
@@ -18,7 +19,14 @@ module.exports = () => {
 				handler: moviesControllers.getMovieDetail,
 				description: 'Get movie details',
 				notes: 'Get movie details',
-				tags: ['api', 'movie']
+				tags: ['api', 'movie'],
+				validate: {
+            params: {
+                id : Joi.string()
+                        .required()
+                        .description('the id for the movie item'),
+            }
+        }
 			}
 		}
 	]

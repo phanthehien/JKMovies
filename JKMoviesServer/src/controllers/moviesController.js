@@ -34,5 +34,19 @@ module.exports.getMovieDetail = (req, reply) => {
 							stars: "Hien Phan, Xuan Trinh, Xuan Hinh, Tran Thanh"
 						}
 				}
-				reply(response);
+				return moviesService.getMovie(req.params.id, moviesRepository.getMovie)
+				.then((movie) => {
+					if(!movie) {
+						return reply(Boom.notFound());
+					}else{
+						return reply({
+									success : true,
+									data: movie
+								});
+					}
+				})
+				.catch((error) => {
+					console.error(error);
+					return reply(Boom.badImplementation);
+				});
 }

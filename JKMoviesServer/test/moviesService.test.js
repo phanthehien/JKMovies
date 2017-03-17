@@ -55,3 +55,24 @@ describe('When getting movies', () => {
 		])
 	})
 });
+
+describe('When getting movie', () => {
+  const sentId = 'id';
+  const movie = { 
+							title:"Flight of Fury",
+							type: "Horror",
+							director: "Xuan Nguyen",
+							length: 123,
+							short_description:"This is a cool film",
+							photo_url: "http://movie.com/photo/fligh.png",
+							video_url: "http://movie.com/photo/fligh.png",
+							stars: "Hien Phan, Xuan Trinh, Xuan Hinh, Tran Thanh"
+						};
+  it('should return movie loaded', () => {
+    const loadMovie = (id) => new Promise((resolve, reject) => {
+      resolve(movie);
+    });
+    moviesService.getMovie(sentId, loadMovie)
+    .should.eventually.deep.equal(movie);
+  })
+});
