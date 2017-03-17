@@ -188,7 +188,7 @@ describe('when getting movie detail', () => {
       }
     }, reply)
     .then(() => {
-      reply.should.have.been.calledWith(sinon.match({output: Boom.badImplementation.output}));
+      reply.should.have.been.calledWith(sinon.match({output: Boom.badImplementation().output}));
       done();
     })
     .catch((error) => {

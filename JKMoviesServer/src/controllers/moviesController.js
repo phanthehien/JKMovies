@@ -32,6 +32,6 @@ module.exports.getMovieDetail = (req, reply) => {
 				})
 				.catch((error) => {
 					console.error(error);
-					return reply(Boom.badImplementation);
+					return reply(Boom.badImplementation());
 				});
 }
