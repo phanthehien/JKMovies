@@ -10,7 +10,7 @@ const movieSchema = mongoose.Schema({
 		video_url: String,
 		starts: String
 });
-const Movie = mongoose.model('Kitten', movieSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;
 
