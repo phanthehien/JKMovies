@@ -15,13 +15,11 @@ import {
 } from 'react-native';
 
 
-var createMovieItem = (movie) => <MovieItem movie={movie} />;
+var createMovieItem = (movie) => <MovieItem key={movie._id} movie={movie} />;
 
 var styles = StyleSheet.create({
     scrollView: {
         marginTop:20,
-        backgroundColor: '#6A85B1',
-        height: 300,
     },
     horizontalScrollView: {
         height: 120,
@@ -54,7 +52,11 @@ var styles = StyleSheet.create({
     img: {
         width: 64,
         height: 64,
-    }
+    },
+    container: {
+        flex:1,
+        flexDirection: 'column'
+    },
 });
 
 
@@ -73,7 +75,9 @@ class MoviesList extends Component {
                 onScroll={() => { console.log('onScroll!'); }}
                 scrollEventThrottle={200}
                 style={styles.scrollView}>
-                {movies.map(createMovieItem)}
+                <View style={styles.container}>
+                 {movies.map(createMovieItem)}
+                </View>
             </ScrollView>
         );
     }
