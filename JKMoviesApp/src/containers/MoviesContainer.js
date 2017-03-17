@@ -4,7 +4,8 @@
 import React, {Component} from 'react';
 
 import {
-    Text
+    Text,
+    ActivityIndicator
 } from 'react-native'
 
 import MoviesList from '../components/MoviesList.component'
@@ -19,11 +20,12 @@ class MoviesContainer extends Component {
     render() {
         const { navigate } = this.props.navigation;
 
-        var { data , error } = this.props.movies;
+        var { data , error, isLoading } = this.props.movies;
 
 
-        return (
-            (!error && data && data.length > 0) ?  <MoviesList movies={data} onSelect={(movie) => navigate('MovieDetail', movie)} /> : <Text>{error}</Text>
+        return (isLoading ?  <ActivityIndicator color="#0000ff" /> :
+                ((!error && data && data.length > 0) ? <MoviesList movies={data} onSelect={(movie) => navigate('MovieDetail', movie)} />
+                : <Text>{error}</Text>)
         )
     }
 }

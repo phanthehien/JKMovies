@@ -11,7 +11,8 @@ import {
     Text,
     View,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    TouchableHighlight
 } from 'react-native';
 
 

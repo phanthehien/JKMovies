@@ -9,7 +9,8 @@ import {
     Text,
     View,
     Image,
-    Button
+    Button,
+    TouchableHightlight
 } from 'react-native';
 
 
@@ -47,6 +48,7 @@ class MovieItem extends Component {
         var { title, type, director, length, short_description, photo_url } = movie;
 
         return (
+
             <View style={styles.item}>
                 <Image style={styles.image} source={{uri: photo_url}} />
                 <Text style={styles.title} >{title}</Text>

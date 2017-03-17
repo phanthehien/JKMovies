@@ -15,7 +15,8 @@ const MoviesReducer = (state = initialState, action) => {
         case constants.MOVIES_LOAD_SUCCESS:
             return {
                 ...state,
-                data : action.payload
+                data : action.payload,
+                isLoading: false
             };
 
             break;
@@ -23,12 +24,14 @@ const MoviesReducer = (state = initialState, action) => {
         case constants.MOVIES_LOAD_REQUEST:
             return {
                 ...state,
+                isLoading: true
             };
 
         case constants.MOVIES_LOAD_ERROR:
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                isLoading: false
             };
 
             break;
