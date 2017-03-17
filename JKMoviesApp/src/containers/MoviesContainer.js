@@ -3,7 +3,11 @@
  */
 import React, {Component} from 'react';
 
-import MovieItem from '../components/MovieItem.component'
+import {
+    Text
+} from 'react-native'
+
+import MoviesList from '../components/MoviesList.component'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -14,10 +18,11 @@ class MoviesContainer extends Component {
 
     render() {
 
-        var { movies } = this.props;
+        var { data , error } = this.props.movies;
+
 
         return (
-            <MovieItem movie={movies[0]} />
+            (!error && data && data.length > 0) ?  <MoviesList movies={data} /> : <Text>{error}</Text>
         )
     }
 }
@@ -25,7 +30,7 @@ class MoviesContainer extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        movies  : store.movies.data
+        movies  : store.movies
     }
 };
 

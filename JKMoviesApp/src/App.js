@@ -16,6 +16,10 @@ import { Provider} from 'react-redux'
 import devToolsEnhancer from 'remote-redux-devtools';
 import thunk from 'redux-thunk'
 
+import * as constants from './common/constants'
+import * as moviesAction from './actions/movies'
+
+
 import rootReducer  from './reducers'
 
 const initialState = {};
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
     },
 });
 
-
+store.dispatch(moviesAction.loadMovies());
 class App extends Component {
 
     render() {

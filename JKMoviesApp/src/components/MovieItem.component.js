@@ -15,7 +15,7 @@ class MovieItem extends Component {
 
     render() {
 
-        var { movie } = this.props
+        var { movie } = this.props;
         var { title, type, director, length, short_description, photo_url } = movie;
 
         return (

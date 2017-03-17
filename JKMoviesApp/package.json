@@ -1,30 +1,31 @@
 {
-	"name": "JKMoviesApp",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
-	"dependencies": {
-		"react": "~15.4.1",
-		"react-native": "0.42.0",
-		"react-redux": "^5.0.3",
-		"redux": "^3.6.0",
-		"redux-thunk": "^2.2.0"
-	},
-	"devDependencies": {
-		"babel-jest": "^19.0.0",
-		"babel-polyfill": "^6.23.0",
-		"babel-preset-es2015": "^6.24.0",
-		"babel-preset-react-native": "1.9.1",
-		"jest": "^19.0.2",
-		"jest-cli": "^19.0.2",
-		"react-test-renderer": "^15.4.2",
-		"regenerator-runtime": "^0.10.3",
-		"remote-redux-devtools": "^0.5.7"
-	},
-	"jest": {
-		"preset": "react-native"
-	}
+  "name": "JKMoviesApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "react": "~15.4.1",
+    "react-native": "0.42.0",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react-native": "1.9.1",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
+    "react-test-renderer": "^15.4.2",
+    "regenerator-runtime": "^0.10.3",
+    "remote-redux-devtools": "^0.5.7"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }
